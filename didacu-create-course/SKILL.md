@@ -23,11 +23,13 @@ This returns JSON. If `"authenticated": true`, extract `api_key` and `api_url` a
 
 If the user passed a topic as `$ARGUMENTS`, start with that. Otherwise ask what they want to learn about.
 
+**Codebase-first mindset**: Users are running this inside Claude Code, so they often want to learn about what they're working on right now. Prompts like "how does auth work in this project", "explain our data model", or "onboard me to this repo" are common and expected — treat them as codebase-aware requests and proactively explore the relevant files.
+
 Then have a **conversation** to understand their needs. Ask these one or two at a time, naturally — don't dump a list:
 
-1. **What specifically?** — Narrow the topic down. "React" is too broad. "React server components and when to use them" is good. If they mention a codebase, ask which parts they want to understand.
+1. **What specifically?** — Narrow the topic. If they reference their codebase (e.g. "explain the API layer", "how does this service work"), ask which parts or modules they care about most. If it's a general topic, sharpen it — "React" is too broad, "React server components and when to use them" is good.
 
-2. **Why?** — What's their goal? Preparing for an interview, onboarding to a new project, exploring out of curiosity, teaching someone else? This shapes the tone and examples.
+2. **Why?** — What's their goal? Onboarding to a new project, preparing for a code review, understanding a module before refactoring, studying for an interview? This shapes the tone and examples.
 
 3. **What do you already know?** — Their experience level with THIS topic (not programming in general). This determines the starting point and depth.
 
@@ -40,11 +42,13 @@ Then have a **conversation** to understand their needs. Ask these one or two at 
 
 5. **Anything specific to focus on?** — Particular aspects, use cases, or pain points they care about.
 
-Adapt your questions based on context. If they're clearly a beginner asking about a broad topic, don't ask about advanced focus areas. If they're an expert, don't explain what depth levels mean.
+Adapt your questions based on context. If they're clearly a beginner asking about a broad topic, don't ask about advanced focus areas. If they're an expert, don't explain what depth levels mean. If they pointed at their codebase, skip generic questions and focus on what parts of the code to include.
 
-## Step 2: Gather file context (if relevant)
+## Step 2: Gather file context
 
-If the user is working with a codebase or mentioned files/code:
+Since this runs inside Claude Code, you have full access to the user's project files. **Use this actively** — it's the main advantage over creating a course on the website.
+
+If the user's topic relates to their codebase (even loosely), explore the relevant code:
 
 - Use `Glob` and `Grep` to find relevant files
 - Use `Read` to read key files (entry points, configs, the specific modules they want to understand)
@@ -53,7 +57,7 @@ If the user is working with a codebase or mentioned files/code:
 
 Don't just dump file contents. Extract what matters: function signatures, type definitions, data flow, architecture patterns. The AI course generator needs understanding, not raw code.
 
-If the codebase is large, ask the user which parts matter most.
+If the codebase is large, ask the user which parts matter most. If the topic is purely academic (e.g. "quantum computing"), skip this step.
 
 ## Step 3: Confirm and generate
 
