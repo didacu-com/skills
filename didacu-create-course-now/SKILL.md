@@ -36,7 +36,7 @@ curl -s -X POST <api_url>/api/v1/courses/generate \
 
 Check the HTTP status and response JSON:
 
-- **201 (success)**: Tell the user the course is generating (1-5 min) and share the URL. **Do NOT poll status.**
+- **201 (success)**: The response includes `courseId`, `slug`, and `url`. Tell the user the course is generating (1-5 min) and share the `url` field directly. **Do NOT poll status.**
 - **403 with credit error**: The response includes `error`, `creditBalance`, `creditCost`, `freeCoursesRemaining`, and `depth`. Show the user a clear message:
   - Display their current credit balance and the cost of the requested depth.
   - If `freeCoursesRemaining > 0`, suggest trying `"overview"` depth (costs 0 credits, uses a free slot).
