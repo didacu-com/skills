@@ -20,7 +20,7 @@ Tell the user you're clearing their saved credentials and opening the browser to
 ## Step 2: Authenticate
 
 ```bash
-python3 ~/.claude/skills/didacu/didacu-create-course/scripts/auth.py
+python3 ~/.claude/skills/didacu-create-course/scripts/auth.py
 ```
 
 This starts a local server and opens the browser to `didacu.com/cli-auth`. The user logs in (or switches accounts) and authorizes the CLI. New credentials are saved automatically.

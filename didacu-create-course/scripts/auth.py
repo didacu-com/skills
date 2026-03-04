@@ -24,7 +24,11 @@ from urllib.parse import parse_qs, urlparse
 
 CREDENTIALS_PATH = Path.home() / ".didacu" / "credentials.json"
 DIDACU_URL = "https://didacu.com"
-ALLOWED_API_URL = re.compile(r"^https://[\w.-]+\.didacu\.com(/.*)?$")
+ALLOWED_API_URL = re.compile(
+    r"^https://[\w.-]+\.didacu\.com(/.*)?$"
+    r"|^https://[\w.-]+\.convex\.site(/.*)?$"
+    r"|^http://(localhost|127\.0\.0\.1)(:\d+)?(/.*)?$"
+)
 TIMEOUT_SECONDS = 120
 
 result = {"success": False}
