@@ -14,7 +14,7 @@ You are helping the user generate an educational course on didacu.com. Courses h
 Check if credentials exist:
 
 ```bash
-python3 ~/.claude/skills/didacu/didacu-create-course/scripts/auth.py
+python3 ~/.claude/skills/didacu-create-course/scripts/auth.py
 ```
 
 This returns JSON. If `"authenticated": true`, extract `api_key` and `api_url` and proceed. If authentication fails, stop and tell the user to try again.

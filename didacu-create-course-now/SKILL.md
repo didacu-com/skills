@@ -12,7 +12,7 @@ Generate a course immediately with no interview. The user provides a topic, you 
 ## Step 0: Authenticate
 
 ```bash
-python3 ~/.claude/skills/didacu/didacu-create-course/scripts/auth.py
+python3 ~/.claude/skills/didacu-create-course/scripts/auth.py
 ```
 
 If `"authenticated": true`, extract `api_key` and `api_url`. If not, stop and tell the user to try again.
